@@ -1,4 +1,4 @@
-# Task Manager
+# CLI To Do List
 
 A feature-rich command-line task management application built in C++ with an animated welcome banner, priority tracking, and undo/redo functionality.
 
