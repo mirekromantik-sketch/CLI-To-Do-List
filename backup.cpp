@@ -78,7 +78,7 @@ void setupConsole() {
     SetConsoleMode(hOut, dwMode);
 }
 
-string getGradientColor(int lineIndex, int colIndex, int frame) {
+string getGradientColor(int lineIndex, int frame) {
     const string colors[] = {
         "\033[38;5;131m", // Muted red
         "\033[38;5;137m", // Terracotta
@@ -101,58 +101,40 @@ string getGradientColor(int lineIndex, int colIndex, int frame) {
         "\033[38;5;132m", // Dusty magenta
         "\033[38;5;168m"  // Soft rose
     };
-    // 45-degree diagonal: both lineIndex and colIndex contribute equally
-    int colorIndex = (lineIndex + colIndex + frame) % 20;
+    int colorIndex = (lineIndex * 3 + frame) % 20;
     return colors[colorIndex];
 }
 
 void displayWelcomeBanner() {
-    const int frames = 40;
-    const int delay_ms = 80;
+    const int frames = 120;
+    const int delay_ms = 100;
     
     for (int frame = 0; frame < frames; ++frame) {
-        // Use ANSI cursor positioning instead of cls to reduce flicker
-        cout << "\033[H\033[2J"; // Clear screen and move to home
+        #ifdef _WIN32
+            system("cls");
+        #else
+            system("clear");
+        #endif
         
         cout << "\n";
-        cout << "  " << getGradientColor(0, 0, frame) << "╔════════════════════════════════════════════════════════════════════════════════════════════════╗" << RESET << "\n";
-        cout << "  " << getGradientColor(0, 0, frame) << "║" << RESET << "                                                                                                " << getGradientColor(0, 95, frame) << "║" << RESET << "\n";
+        cout << "  " << getGradientColor(0, frame) << "╔════════════════════════════════════════════════════════════════════════════════════════════════╗" << RESET << "\n";
+        cout << "  " << getGradientColor(0, frame) << "║" << RESET << "                                                                                                " << getGradientColor(0, frame) << "║" << RESET << "\n";
         
-        cout << "  " << getGradientColor(1, 0, frame) << "║" << RESET << "    " << getGradientColor(1, 4, frame) << "████████╗ █████╗ ███████╗██╗  ██╗    ███╗   ███╗ █████╗ ███████╗████████╗███████╗██████╗ " << RESET << " " << getGradientColor(1, 95, frame) << "  ║" << RESET << "\n";
-        cout << "  " << getGradientColor(2, 0, frame) << "║" << RESET << "    " << getGradientColor(2, 4, frame) << "╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝    ████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗" << RESET << " " << getGradientColor(2, 95, frame) << "  ║" << RESET << "\n";
-        cout << "  " << getGradientColor(3, 0, frame) << "║" << RESET << "       " << getGradientColor(3, 7, frame) << "██║   ███████║███████╗█████╔╝     ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝" << RESET << " " << getGradientColor(3, 95, frame) << "  ║" << RESET << "\n";
-        cout << "  " << getGradientColor(4, 0, frame) << "║" << RESET << "       " << getGradientColor(4, 7, frame) << "██║   ███████║███████╗█████╔╝     ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝" << RESET << " " << getGradientColor(4, 95, frame) << "  ║" << RESET << "\n";
-        cout << "  " << getGradientColor(5, 0, frame) << "║" << RESET << "       " << getGradientColor(5, 7, frame) << "██║   ██╔══██║╚════██║██╔═██╗     ██║╚██╔╝██║██╔══██║╚════██║   ██║   ██╔══╝  ██╔══██╗" << RESET << " " << getGradientColor(5, 95, frame) << "  ║" << RESET << "\n";
-        cout << "  " << getGradientColor(6, 0, frame) << "║" << RESET << "       " << getGradientColor(6, 7, frame) << "██║   ██║  ██║███████║██║  ██╗    ██║ ╚═╝ ██║██║  ██║███████║   ██║   ███████╗██║  ██║" << RESET << " " << getGradientColor(6, 95, frame) << "  ║" << RESET << "\n";
-        cout << "  " << getGradientColor(7, 0, frame) << "║" << RESET << "       " << getGradientColor(7, 7, frame) << "╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝" << RESET << " " << getGradientColor(7, 95, frame) << "  ║" << RESET << "\n";
-        cout << "  " << getGradientColor(8, 0, frame) << "║" << RESET << "                                                                                                " << getGradientColor(8, 95, frame) << "║" << RESET << "\n";
-        cout << "  " << getGradientColor(9, 0, frame) << "║" << RESET << "                                 " << getGradientColor(9, 33, frame) << "Advanced Task Management System" << RESET << "                                " << getGradientColor(9, 95, frame) << "║" << RESET << "\n";
-        cout << "  " << getGradientColor(10, 0, frame) << "║" << RESET << "                           " << getGradientColor(10, 27, frame) << "Priority Tracking • Undo/Redo • Search & Sort" << RESET << "                        " << getGradientColor(10, 95, frame) << "║" << RESET << "\n";
-        cout << "  " << getGradientColor(11, 0, frame) << "║" << RESET << "                                                                                                " << getGradientColor(11, 95, frame) << "║" << RESET << "\n";
-        cout << "  " << getGradientColor(12, 0, frame) << "╚════════════════════════════════════════════════════════════════════════════════════════════════╝" << RESET << "\n";
+        cout << "  " << getGradientColor(1, frame) << "║" << RESET << "    " << getGradientColor(1, frame) << "████████╗ █████╗ ███████╗██╗  ██╗    ███╗   ███╗ █████╗ ███████╗████████╗███████╗██████╗ " << RESET << " " << getGradientColor(1, frame) << "  ║" << RESET << "\n";
+        cout << "  " << getGradientColor(2, frame) << "║" << RESET << "    " << getGradientColor(2, frame) << "╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝    ████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗" << RESET << " " << getGradientColor(2, frame) << "  ║" << RESET << "\n";
+        cout << "  " << getGradientColor(3, frame) << "║" << RESET << "       " << getGradientColor(3, frame) << "██║   ███████║███████╗█████╔╝     ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝" << RESET << " " << getGradientColor(3, frame) << "  ║" << RESET << "\n";
+        cout << "  " << getGradientColor(4, frame) << "║" << RESET << "       " << getGradientColor(4, frame) << "██║   ███████║███████╗█████╔╝     ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝" << RESET << " " << getGradientColor(4, frame) << "  ║" << RESET << "\n";
+        cout << "  " << getGradientColor(5, frame) << "║" << RESET << "       " << getGradientColor(5, frame) << "██║   ██╔══██║╚════██║██╔═██╗     ██║╚██╔╝██║██╔══██║╚════██║   ██║   ██╔══╝  ██╔══██╗" << RESET << " " << getGradientColor(5, frame) << "  ║" << RESET << "\n";
+        cout << "  " << getGradientColor(6, frame) << "║" << RESET << "       " << getGradientColor(6, frame) << "██║   ██║  ██║███████║██║  ██╗    ██║ ╚═╝ ██║██║  ██║███████║   ██║   ███████╗██║  ██║" << RESET << " " << getGradientColor(6, frame) << "  ║" << RESET << "\n";
+        cout << "  " << getGradientColor(6, frame) << "║" << RESET << "       " << getGradientColor(6, frame) << "╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝" << RESET << " " << getGradientColor(6, frame) << "  ║" << RESET << "\n";
+        cout << "  " << getGradientColor(7, frame) << "║" << RESET << "                                                                                                " << getGradientColor(7, frame) << "║" << RESET << "\n";
+        cout << "  " << getGradientColor(8, frame) << "║" << RESET << "                                 Advanced Task Management System                                " << getGradientColor(8, frame) << "║" << RESET << "\n";
+        cout << "  " << getGradientColor(9, frame) << "║" << RESET << "                           Priority Tracking • Undo/Redo • Search & Sort                        " << getGradientColor(9, frame) << "║" << RESET << "\n";
+        cout << "  " << getGradientColor(10, frame) << "║" << RESET << "                                                                                                " << getGradientColor(10, frame) << "║" << RESET << "\n";
+        cout << "  " << getGradientColor(11, frame) << "╚════════════════════════════════════════════════════════════════════════════════════════════════╝" << RESET << "\n";
         
-        cout << flush;
         this_thread::sleep_for(chrono::milliseconds(delay_ms));
     }
-    
-    // Display final static banner with last frame colors
-    cout << "\033[H\033[2J"; // Clear screen
-    cout << "\n";
-    cout << "  " << getGradientColor(0, 0, frames-1) << "╔════════════════════════════════════════════════════════════════════════════════════════════════╗" << RESET << "\n";
-    cout << "  " << getGradientColor(0, 0, frames-1) << "║" << RESET << "                                                                                                " << getGradientColor(0, 95, frames-1) << "║" << RESET << "\n";
-    
-    cout << "  " << getGradientColor(1, 0, frames-1) << "║" << RESET << "    " << getGradientColor(1, 4, frames-1) << "████████╗ █████╗ ███████╗██╗  ██╗    ███╗   ███╗ █████╗ ███████╗████████╗███████╗██████╗ " << RESET << " " << getGradientColor(1, 95, frames-1) << "  ║" << RESET << "\n";
-    cout << "  " << getGradientColor(2, 0, frames-1) << "║" << RESET << "    " << getGradientColor(2, 4, frames-1) << "╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝    ████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗" << RESET << " " << getGradientColor(2, 95, frames-1) << "  ║" << RESET << "\n";
-    cout << "  " << getGradientColor(3, 0, frames-1) << "║" << RESET << "       " << getGradientColor(3, 7, frames-1) << "██║   ███████║███████╗█████╔╝     ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝" << RESET << " " << getGradientColor(3, 95, frames-1) << "  ║" << RESET << "\n";
-    cout << "  " << getGradientColor(4, 0, frames-1) << "║" << RESET << "       " << getGradientColor(4, 7, frames-1) << "██║   ███████║███████╗█████╔╝     ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝" << RESET << " " << getGradientColor(4, 95, frames-1) << "  ║" << RESET << "\n";
-    cout << "  " << getGradientColor(5, 0, frames-1) << "║" << RESET << "       " << getGradientColor(5, 7, frames-1) << "██║   ██╔══██║╚════██║██╔═██╗     ██║╚██╔╝██║██╔══██║╚════██║   ██║   ██╔══╝  ██╔══██╗" << RESET << " " << getGradientColor(5, 95, frames-1) << "  ║" << RESET << "\n";
-    cout << "  " << getGradientColor(6, 0, frames-1) << "║" << RESET << "       " << getGradientColor(6, 7, frames-1) << "██║   ██║  ██║███████║██║  ██╗    ██║ ╚═╝ ██║██║  ██║███████║   ██║   ███████╗██║  ██║" << RESET << " " << getGradientColor(6, 95, frames-1) << "  ║" << RESET << "\n";
-    cout << "  " << getGradientColor(7, 0, frames-1) << "║" << RESET << "       " << getGradientColor(7, 7, frames-1) << "╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝" << RESET << " " << getGradientColor(7, 95, frames-1) << "  ║" << RESET << "\n";
-    cout << "  " << getGradientColor(8, 0, frames-1) << "║" << RESET << "                                                                                                " << getGradientColor(8, 95, frames-1) << "║" << RESET << "\n";
-    cout << "  " << getGradientColor(9, 0, frames-1) << "║" << RESET << "                                 " << getGradientColor(9, 33, frames-1) << "Advanced Task Management System" << RESET << "                                " << getGradientColor(9, 95, frames-1) << "║" << RESET << "\n";
-    cout << "  " << getGradientColor(10, 0, frames-1) << "║" << RESET << "                           " << getGradientColor(10, 27, frames-1) << "Priority Tracking • Undo/Redo • Search & Sort" << RESET << "                        " << getGradientColor(10, 95, frames-1) << "║" << RESET << "\n";
-    cout << "  " << getGradientColor(11, 0, frames-1) << "║" << RESET << "                                                                                                " << getGradientColor(11, 95, frames-1) << "║" << RESET << "\n";
-    cout << "  " << getGradientColor(12, 0, frames-1) << "╚════════════════════════════════════════════════════════════════════════════════════════════════╝" << RESET << "\n";
 }
 
 void displayMenu() {

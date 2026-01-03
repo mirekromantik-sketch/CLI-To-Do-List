@@ -66,4 +66,4 @@ Tasks are automatically saved to `tasks.json` in the same directory as the execu
 
 - ANSI color codes require a terminal that supports virtual terminal sequences
 - The animated banner runs for approximately 12 seconds on startup
-- Duplicate task titles are not allowed
+- Duplicate task titles are not allowed                                                                             
