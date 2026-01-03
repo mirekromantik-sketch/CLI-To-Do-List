@@ -32,7 +32,7 @@ A feature-rich command-line task management application built in C++ with an ani
 
 Run the executable:
 ```bash
-./task_manager
+./ToDoList
 ```
 
 ### Menu Options
