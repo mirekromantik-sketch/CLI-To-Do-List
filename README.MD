@@ -1,42 +1,69 @@
-# CLI To-Do List
+# Task Manager
 
-A very simple command-line to-do list app in C++.
+A feature-rich command-line task management application built in C++ with an animated welcome banner, priority tracking, and undo/redo functionality.
 
-## What You Need
+## Features
 
-- C++ compiler
-- `json.hpp` file from [nlohmann/json](https://github.com/nlohmann/json)
+- **Task Management**: Add, edit, delete, and view tasks
+- **Priority Levels**: Low, Medium, and High priority classification
+- **Due Dates**: Optional due date tracking
+- **Search**: Find tasks by keyword
+- **Sorting**: Organize tasks by priority or completion status
+- **Undo/Redo**: Revert or reapply recent changes
+- **Persistent Storage**: Tasks saved to JSON file
+- **Animated UI**: Gradient color-shifting welcome banner
 
-## How to Run
+## Requirements
 
-1. Download `json.hpp` and put it in the same folder as `main.cpp`
-2. Compile:
+- C++11 or later
+- Windows OS (uses Windows console API)
+- [nlohmann/json](https://github.com/nlohmann/json) library
+
+## Installation
+
+1. Download or clone the repository
+2. Include the `json.hpp` header file from nlohmann/json library
+3. Compile the program:
    ```bash
-   g++ -o todo main.cpp
-   ```
-3. Run:
-   ```bash
-   ./todo
+   g++ -std=c++11 main.cpp -o ToDoList
    ```
 
-## How to Use
+## Usage
 
-The menu has 5 options:
-
-1. **Add a task** - Type your task
-2. **View tasks** - See all your tasks
-3. **Mark complete** - Check off a task
-4. **Delete task** - Remove a task
-5. **Exit** - Quit the program
-
-Tasks are saved automatically to `tasks.json`.
-
-## Example
-
-```
-1. [ ] Buy milk
-2. [X] Do homework
+Run the executable:
+```bash
+./task_manager
 ```
 
-`[ ]` = not done  
-`[X]` = done
+### Menu Options
+
+1. **Add Task** - Create a new task with title, priority, and optional due date
+2. **View Tasks** - Display all tasks with their status
+3. **Edit Task** - Modify existing task details
+4. **Delete Task** - Remove a task (with confirmation)
+5. **Search Tasks** - Find tasks by keyword
+6. **Sort Tasks** - Organize by priority or completion
+7. **Undo** - Revert the last change
+8. **Redo** - Reapply an undone change
+9. **Exit** - Save and close the application
+
+### Priority Levels
+
+- `[L]` - Low (Green)
+- `[M]` - Medium (Yellow)
+- `[H]` - High (Red)
+
+### Task Status
+
+- `[ ]` - Incomplete
+- `[V]` - Completed
+
+## Data Storage
+
+Tasks are automatically saved to `tasks.json` in the same directory as the executable. The file is created automatically on first run.
+
+## Notes
+
+- ANSI color codes require a terminal that supports virtual terminal sequences
+- The animated banner runs for approximately 12 seconds on startup
+- Duplicate task titles are not allowed
