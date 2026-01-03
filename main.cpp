@@ -121,7 +121,6 @@ void displayWelcomeBanner() {
         cout << "  " << getGradientColor(1, 0, frame) << "║" << RESET << "    " << getGradientColor(1, 4, frame) << "████████╗ █████╗ ███████╗██╗  ██╗    ███╗   ███╗ █████╗ ███████╗████████╗███████╗██████╗ " << RESET << " " << getGradientColor(1, 95, frame) << "  ║" << RESET << "\n";
         cout << "  " << getGradientColor(2, 0, frame) << "║" << RESET << "    " << getGradientColor(2, 4, frame) << "╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝    ████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗" << RESET << " " << getGradientColor(2, 95, frame) << "  ║" << RESET << "\n";
         cout << "  " << getGradientColor(3, 0, frame) << "║" << RESET << "       " << getGradientColor(3, 7, frame) << "██║   ███████║███████╗█████╔╝     ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝" << RESET << " " << getGradientColor(3, 95, frame) << "  ║" << RESET << "\n";
-        cout << "  " << getGradientColor(4, 0, frame) << "║" << RESET << "       " << getGradientColor(4, 7, frame) << "██║   ███████║███████╗█████╔╝     ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝" << RESET << " " << getGradientColor(4, 95, frame) << "  ║" << RESET << "\n";
         cout << "  " << getGradientColor(5, 0, frame) << "║" << RESET << "       " << getGradientColor(5, 7, frame) << "██║   ██╔══██║╚════██║██╔═██╗     ██║╚██╔╝██║██╔══██║╚════██║   ██║   ██╔══╝  ██╔══██╗" << RESET << " " << getGradientColor(5, 95, frame) << "  ║" << RESET << "\n";
         cout << "  " << getGradientColor(6, 0, frame) << "║" << RESET << "       " << getGradientColor(6, 7, frame) << "██║   ██║  ██║███████║██║  ██╗    ██║ ╚═╝ ██║██║  ██║███████║   ██║   ███████╗██║  ██║" << RESET << " " << getGradientColor(6, 95, frame) << "  ║" << RESET << "\n";
         cout << "  " << getGradientColor(7, 0, frame) << "║" << RESET << "       " << getGradientColor(7, 7, frame) << "╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝" << RESET << " " << getGradientColor(7, 95, frame) << "  ║" << RESET << "\n";
@@ -144,7 +143,6 @@ void displayWelcomeBanner() {
     cout << "  " << getGradientColor(1, 0, frames-1) << "║" << RESET << "    " << getGradientColor(1, 4, frames-1) << "████████╗ █████╗ ███████╗██╗  ██╗    ███╗   ███╗ █████╗ ███████╗████████╗███████╗██████╗ " << RESET << " " << getGradientColor(1, 95, frames-1) << "  ║" << RESET << "\n";
     cout << "  " << getGradientColor(2, 0, frames-1) << "║" << RESET << "    " << getGradientColor(2, 4, frames-1) << "╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝    ████╗ ████║██╔══██╗██╔════╝╚══██╔══╝██╔════╝██╔══██╗" << RESET << " " << getGradientColor(2, 95, frames-1) << "  ║" << RESET << "\n";
     cout << "  " << getGradientColor(3, 0, frames-1) << "║" << RESET << "       " << getGradientColor(3, 7, frames-1) << "██║   ███████║███████╗█████╔╝     ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝" << RESET << " " << getGradientColor(3, 95, frames-1) << "  ║" << RESET << "\n";
-    cout << "  " << getGradientColor(4, 0, frames-1) << "║" << RESET << "       " << getGradientColor(4, 7, frames-1) << "██║   ███████║███████╗█████╔╝     ██╔████╔██║███████║███████╗   ██║   █████╗  ██████╔╝" << RESET << " " << getGradientColor(4, 95, frames-1) << "  ║" << RESET << "\n";
     cout << "  " << getGradientColor(5, 0, frames-1) << "║" << RESET << "       " << getGradientColor(5, 7, frames-1) << "██║   ██╔══██║╚════██║██╔═██╗     ██║╚██╔╝██║██╔══██║╚════██║   ██║   ██╔══╝  ██╔══██╗" << RESET << " " << getGradientColor(5, 95, frames-1) << "  ║" << RESET << "\n";
     cout << "  " << getGradientColor(6, 0, frames-1) << "║" << RESET << "       " << getGradientColor(6, 7, frames-1) << "██║   ██║  ██║███████║██║  ██╗    ██║ ╚═╝ ██║██║  ██║███████║   ██║   ███████╗██║  ██║" << RESET << " " << getGradientColor(6, 95, frames-1) << "  ║" << RESET << "\n";
     cout << "  " << getGradientColor(7, 0, frames-1) << "║" << RESET << "       " << getGradientColor(7, 7, frames-1) << "╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝    ╚═╝     ╚═╝╚═╝  ╚═╝╚══════╝   ╚═╝   ╚══════╝╚═╝  ╚═╝" << RESET << " " << getGradientColor(7, 95, frames-1) << "  ║" << RESET << "\n";
@@ -162,7 +160,7 @@ void displayMenu() {
     cout << "  2. [=] View Tasks           6. [*] Sort Tasks\n";
     cout << "  3. [~] Edit Task            7. [<] Undo\n";
     cout << "  4. [X] Delete Task          8. [>] Redo\n";
-    cout << "                                9. [!] Exit\n";
+    cout << "                              9. [!] Exit\n";
     cout << "  ====================================================================\n";
 }
 
